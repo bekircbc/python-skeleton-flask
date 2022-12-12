@@ -1,0 +1,33 @@
+{% extends "layouts/main.html" %} {% block content %}
+<h2 style="align-text: center">Bank Model</h2>
+
+<div class="row">
+  <div class="six columns" class="u-full-width">
+    <form method="get">
+      <label for="username">Username : </label>
+      <input
+        type="text"
+        name="username"
+        id="username"
+        value="{% if username != None %}{{username}}{% endif%}"
+      />
+      <label for="pin">Pin : </label>
+      <input
+        type="password"
+        name="pin"
+        id="pin"
+        value="{% if pin != None %}{{pin}}{% endif%}"
+      />
+
+      <br />
+      <input type="submit" value="Login" />
+    </form>
+  </div>
+  <div class="six columns, u-full-width, center">
+    <div style="font-size: 5rem">{{amount}} {{currency}}</div>
+    <div style="font-size: 5rem">equal to</div>
+    <div style="font-size: 5rem">{{examount}} {{excurrency}}</div>
+  </div>
+</div>
+
+{% endblock %}

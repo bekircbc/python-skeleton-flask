@@ -1,0 +1,51 @@
+{% extends "layouts/main.html" %} {% block content %} {% if name != None: %}
+<h3 style="text-align: center">
+  {{currency}}-{{excurrency}} Exchanger - Rate : {{rate}}
+</h3>
+
+{% endif %}
+<div class="row">
+  <div class="six columns" class="u-full-width">
+    <form method="get">
+      <label for="currency">Currency : </label>
+      <input
+        type="text"
+        name="currency"
+        id="currency"
+        value="{% if currency != None %}{{currency}}{% endif%}"
+      />
+      <label for="amount">Amount : </label>
+      <input
+        type="integer"
+        name="amount"
+        id="amount"
+        value="{% if amount != None %}{{amount}}{% endif%}"
+      />
+      <label for="rate">Rate : </label>
+
+      <input
+        type="integer"
+        name="rate"
+        id="rate"
+        value="{% if rate != None %}{{rate}}{% endif%}"
+      />
+      <label for="excurrency">Exchange Currency : </label>
+
+      <input
+        type="text"
+        name="excurrency"
+        id="excurrency"
+        value="{% if excurrency != None %}{{excurrency}}{% endif%}"
+      />
+      <br />
+      <input type="submit" value="Formular abschicken!" />
+    </form>
+  </div>
+  <div class="six columns, u-full-width, center">
+    <div style="font-size: 5rem">{{amount}} {{currency}}</div>
+    <div style="font-size: 5rem">equal to</div>
+    <div style="font-size: 5rem">{{examount}} {{excurrency}}</div>
+  </div>
+</div>
+
+{% endblock %}

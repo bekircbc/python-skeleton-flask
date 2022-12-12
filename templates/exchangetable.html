@@ -1,0 +1,74 @@
+{% extends "layouts/main.html" %} {% block content %} {% if name != None: %}
+<h1>{{currency1}}-{{currency2}} Exchanger - Rate : {{rate}}</h1>
+
+{% endif %}
+<div class="row">
+  <div class="four columns">
+    <form method="get" class="u-full-width">
+      <label for="currency1">Currency : </label>
+      <input
+        type="text"
+        name="currency1"
+        id="currency1"
+        value="{% if currency1 != None %}{{currency1}}{% endif%}"
+      />
+
+      <label for="rate">Rate : </label>
+
+      <input
+        type="text"
+        name="rate"
+        id="rate"
+        value="{% if rate != None %}{{rate}}{% endif%}"
+      />
+      <label for="currency2">Exchange Currency : </label>
+
+      <input
+        type="text"
+        name="currency2"
+        id="currency2"
+        value="{% if currency2 != None %}{{currency2}}{% endif%}"
+      />
+      <br />
+      <input type="submit" value="Formular abschicken!" />
+    </form>
+  </div>
+
+  <div class="four columns">
+    <table class="u-full-width">
+      <thead>
+        <tr>
+          <th>{{currency1}}</th>
+          <th>{{currency2}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in table1 %}
+        <tr>
+          <td>{{item[0]}}</td>
+          <td>{{item[1]}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="four columns">
+    <table class="u-full-width">
+      <thead>
+        <tr>
+          <th>{{currency2}}</th>
+          <th>{{currency1}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in table2 %}
+        <tr>
+          <td>{{item[0]}}</td>
+          <td>{{item[1]}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "layouts/main.html" %} {% block content %} {% if name != None: %}
+<h1>Der name ist : {{name}}</h1>
+<p>Her/his age is {{age}}</p>
+{% endif %}
+<form method="get">
+  <label for="name">Name : </label>
+  <input
+    type="text"
+    name="name"
+    id="name"
+    value="{% if name != None %}{{name}}{% endif%}"
+  />
+  <label for="age">Age : </label>
+
+  <input
+    type="text"
+    name="age"
+    id="age"
+    value="{% if age != None %}{{age}}{% endif%}"
+  />
+
+  <br />
+  <input type="submit" value="Formular abschicken!" />
+</form>
+{% endblock %}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>First Python</title>
+    <link rel="stylesheet" href="./static/lib/skeleton/normalize.css" />
+    <link rel="stylesheet" href="./static/lib/skeleton/skeleton.css" />
+    <link rel="stylesheet" href="./static/lib/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <ul class="navigation">
+          <li class="navigation-item">
+            <a href="/">Start Page</a>
+          </li>
+          <li class="navigation-item">
+            <a href="/test">Test Page</a>
+          </li>
+          <li class="navigation-item">
+            <a href="/currency">Currency</a>
+          </li>
+          <li class="navigation-item">
+            <a href="/exchangetable">Exchange Table</a>
+          </li>
+          <li class="navigation-item">
+            <a href="/bankmodel">Bank Model</a>
+          </li>
+        </ul>
+      </div>
+      <div style="clear: both">&nbsp</div>
+      {% block content %} {% endblock %}
+    </div>
+  </body>
+</html>
