@@ -1,0 +1,17 @@
+{% extends "layouts/main.html" %} {% block content %} {% if name != None: %}
+<h3 style="text-align: center">The Online Book Club</h3>
+
+{% endif %}
+<div class="books">
+  {%for book in books %}
+
+  <div class="book">
+    <div>Title : {{book.title}}</div>
+    <div>Description : {{book.description}}</div>
+    <div>Language : {{book.language}}</div>
+    <div>Rating : {{book.rate}}</div>
+  </div>
+
+  {%endfor%}
+</div>
+{% endblock %}

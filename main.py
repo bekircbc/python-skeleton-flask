@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request
+import requests
+import json
 app = Flask(__name__)
 
 class Item():
@@ -108,6 +110,13 @@ def bankmodel():
 
     return render_template("bankmodel.html", current_username=current_username, current_pin=current_pin, current_credit=current_credit, accounts=accounts, pay_in=pay_in(), withdraw=withdraw() )
 
-
+@app.route('/books', methods=['GET'])
+def books():
+    req= requests.get("https://apis-for-beginner.bscebeci.de/api/books")
+    data=req.content
+    books=json.loads(data)
+    
+    return render_template("books.html", books=books)
+  
 if __name__ == '__main__':
     app.run()

@@ -7,3 +7,24 @@
   padding-left: 10px;
   padding-right: 10px;
 }
+
+.books {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+.book {
+  display: flex;
+  width: 40rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid navy;
+  border-radius: 10px;
+  padding: 1.4rem;
+}
