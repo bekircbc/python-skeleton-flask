@@ -59,57 +59,6 @@ def exchangetable():
     
     return render_template("exchangetable.html", currency1=currency1, rate=rate, currency2=currency2, table1=table1, table2=table2)
 
-@app.route('/bankmodel')
-def check_pin(accounts, current_username, current_pin):
-    current_account=[]
-    wrong_pin=0
-    state=""
-    while wrong_pin <=3:
-      for account in accounts:
-        if account.username == current_username and account.pin == current_pin:
-          print("Welkomme, User")
-          current_account.append(account)
-          state="online"
-        else:
-          wrong_pin+=1
-          if wrong_pin==3:
-            state="offline"
-            print("Falsche PIN! Konto gesperrt!") 
-    return state , current_account
-            
-def withdraw(current_credit, money):
-  if current_credit <= money:
-      current_credit -= money
-      print(f"Du hast {money} € abgehoben.")
-  else:
-      print("Du kannst nur " + str(current_credit) + " € abheben!")
-        
-def pay_in(current_credit, money):
-  current_credit += money
-  
-def bankmodel():
-    accounts=[
-      {
-      "username":"aaa",
-      "pin":111,
-      "credit":1000,
-      "transactions":[]  
-    },
-           {
-      "username":"bbb",
-      "pin":222,
-      "credit":800,
-      "transactions":[]   
-    }
-      ]
-     
-    current_username = request.args.get("username", "aaa")
-    current_pin = float(request.args.get("pin"), 1)
-    current_credit = request.args.get("credit", 0)
-    check_pin(accounts, current_username, current_pin)
-
-    return render_template("bankmodel.html", current_username=current_username, current_pin=current_pin, current_credit=current_credit, accounts=accounts, pay_in=pay_in(), withdraw=withdraw() )
-
 @app.route('/books', methods=['GET'])
 def books():
     req= requests.get("https://apis-for-beginner.bscebeci.de/api/books")
