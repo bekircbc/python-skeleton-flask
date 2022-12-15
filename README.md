@@ -8,7 +8,7 @@
 
 ## Deployment Link
 
-- [Deployment Link](https://python-skeleton-flask.bscebeci.de/ "Deployment Link")
+- [Hetzner Deployment Link](https://python-skeleton-flask.bscebeci.de/ "Hetzner Deployment Link")
 
 - [Meetup Backend Link](https://meetup-getup-python.bscebeci.de/api/meetups "Meetup Backend Link")
 
