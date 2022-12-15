@@ -1,0 +1,17 @@
+{% extends "layouts/main.html" %} {% block content %} {% if name != None: %}
+<h3 style="text-align: center">Meetup Getup</h3>
+
+{% endif %}
+<div class="meetups">
+  {%for meetup in meetups %}
+
+  <div class="meetup">
+    <div>Title : {{meetup.title}}</div>
+    <div>Description : {{meetup.description}}</div>
+    <div>Category : {{meetup.category}}</div>
+    <div>Rating : {{meetup.averageRating}}</div>
+  </div>
+
+  {%endfor%}
+</div>
+{% endblock %}

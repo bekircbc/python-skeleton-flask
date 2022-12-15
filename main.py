@@ -66,6 +66,14 @@ def books():
     books=json.loads(data)
     
     return render_template("books.html", books=books)
+
+@app.route('/meetups', methods=['GET'])
+def meetups():
+    req= requests.get("https://meetup-getup-python.bscebeci.de/api/meetups")
+    data=req.content
+    meetups=json.loads(data)
+    
+    return render_template("meetups.html", meetups=meetups)
   
 if __name__ == '__main__':
     app.run()

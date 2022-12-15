@@ -28,3 +28,24 @@
   border-radius: 10px;
   padding: 1.4rem;
 }
+
+.meetups {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+.meetup {
+  display: flex;
+  width: 20rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid navy;
+  border-radius: 10px;
+  padding: 1.4rem;
+}
