@@ -7,6 +7,20 @@ class Item():
     def __init__(self, name,amount):
         self.name=name
         self.amount=amount
+        
+def toggleFavoriteStatusHandler(meetup):
+    meetupData = {
+            "title": meetup.title,
+            "address": meetup.address,
+            "images": meetup.images,
+            "description": meetup.description,
+            "averageRating": meetup.averageRating,
+            "reviews": meetup.reviews,
+            "owner": meetup.owner,
+            "isFavorite": not(meetup.isFavorite),
+            "category": meetup.category,
+            };
+    requests.put("https://meetup-getup-python.bscebeci.de/api/meetups/${meetup.id}", meetupData)
 
 @app.route('/')
 def hello():
@@ -72,22 +86,16 @@ def allmeetups():
     req= requests.get("https://meetup-getup-python.bscebeci.de/api/meetups")
     data=req.content
     meetups=json.loads(data)
-
-    def toggleFavoriteStatusHandler(meetup):
-        meetupData = {
-            "title": meetup.title,
-            "address": meetup.address,
-            "images": meetup.images,
-            "description": meetup.description,
-            "averageRating": meetup.averageRating,
-            "reviews": meetup.reviews,
-            "owner": meetup.owner,
-            "isFavorite": not(meetup.isFavorite),
-            "category": meetup.category,
-            };
-        requests.put("https://meetup-getup-python.bscebeci.de/api/meetups/${meetup.id}", meetupData)
     
     return render_template("allmeetups.html", meetups=meetups, toggleFavoriteStatusHandler=toggleFavoriteStatusHandler)
+
+@app.route('/favorites', methods=['GET','PUT'])
+def favorites():
+    req= requests.get("https://meetup-getup-python.bscebeci.de/api/meetups")
+    data=req.content
+    meetups=json.loads(data)
+    
+    return render_template("favorites.html", meetups=meetups, toggleFavoriteStatusHandler=toggleFavoriteStatusHandler)
   
 if __name__ == '__main__':
     app.run()
