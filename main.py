@@ -67,13 +67,13 @@ def books():
     
     return render_template("books.html", books=books)
 
-@app.route('/meetups', methods=['GET'])
-def meetups():
+@app.route('/allmeetups', methods=['GET'])
+def allmeetups():
     req= requests.get("https://meetup-getup-python.bscebeci.de/api/meetups")
     data=req.content
     meetups=json.loads(data)
     
-    return render_template("meetups.html", meetups=meetups)
+    return render_template("allmeetups.html", meetups=meetups)
   
 if __name__ == '__main__':
     app.run()

@@ -1,0 +1,28 @@
+{% extends "layouts/main.html" %} {% block content %}
+
+<div class="allMeetupsPage">
+<h1>All Meetups</h1>
+
+  {%for meetup in meetups %}
+
+  <li key={{meetup._id}}>
+    <div>
+      <img src={{meetup.images[0]}} alt={{meetup.title}} />
+    </div>
+    <div>
+      <h3>{{meetup.title}}</h3>
+      <address>{{meetup.address}}</address>
+      <p>{{meetup.description}}</p>
+    </div>
+    <div>
+      <button onClick={() => toggleFavoriteStatusHandler(meetup)}>
+        {% meetup.isFavorite
+          ? "Remove from Favorites"
+          : "Add to Favorites" %}
+      </button>
+    </div>
+  </li>
+
+  {%endfor%}
+</div>
+{% endblock %}
