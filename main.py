@@ -67,13 +67,27 @@ def books():
     
     return render_template("books.html", books=books)
 
-@app.route('/allmeetups', methods=['GET'])
+@app.route('/allmeetups', methods=['GET','PUT'])
 def allmeetups():
     req= requests.get("https://meetup-getup-python.bscebeci.de/api/meetups")
     data=req.content
     meetups=json.loads(data)
+
+    def toggleFavoriteStatusHandler(meetup):
+        meetupData = {
+            "title": meetup.title,
+            "address": meetup.address,
+            "images": meetup.images,
+            "description": meetup.description,
+            "averageRating": meetup.averageRating,
+            "reviews": meetup.reviews,
+            "owner": meetup.owner,
+            "isFavorite": not(meetup.isFavorite),
+            "category": meetup.category,
+            };
+        requests.put("https://meetup-getup-python.bscebeci.de/api/meetups/${meetup.id}", meetupData)
     
-    return render_template("allmeetups.html", meetups=meetups)
+    return render_template("allmeetups.html", meetups=meetups, toggleFavoriteStatusHandler=toggleFavoriteStatusHandler)
   
 if __name__ == '__main__':
     app.run()
