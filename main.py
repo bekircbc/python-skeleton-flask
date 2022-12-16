@@ -100,7 +100,7 @@ def favorites():
     
     return render_template("favorites.html", meetups=meetups, toggleFavoriteStatusHandler=toggleFavoriteStatusHandler)
 
-@app.route('/newmeetup', methods=['POST'])
+@app.route('/newmeetup')
 def newmeetup():
     title = request.args.get("title", "Enter title hier")
     image = request.args.get("image", "https://picsum.photos/520/460")
