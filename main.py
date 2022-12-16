@@ -22,8 +22,8 @@ def toggleFavoriteStatusHandler(meetup):
             };
     requests.put("https://meetup-getup-python.bscebeci.de/api/meetups/${meetup.id}", meetupData)
     
-def submitHandler(meetupData):
-    requests.post("https://meetup-getup-python.bscebeci.de/api/meetups", meetupData)
+# def submitHandler(meetupData):
+#     requests.post("https://meetup-getup-python.bscebeci.de/api/meetups", meetupData)
 
 @app.route('/')
 def hello():
@@ -100,23 +100,32 @@ def favorites():
     
     return render_template("favorites.html", meetups=meetups, toggleFavoriteStatusHandler=toggleFavoriteStatusHandler)
 
-@app.route('/newmeetup')
+# @app.route('/newmeetup')
+# def newmeetup():
+#     title = request.args.get("title", "Enter title hier")
+#     image = request.args.get("image", "https://picsum.photos/520/460")
+#     address = request.args.get("address", "Asd Str. 16, 546372, Oklohama")
+#     category = request.args.get("category", "Meetup")
+#     description=request.args.get("description", "This is a meetup...")
+    
+#     meetupData = {
+
+#             };
+    
+#     return render_template("newmeetup.html", title=title,image=image, address=address, category=category, description=description, submitHandler=submitHandler)
+
+@app.route('/newmeetup', methods=['POST'])
 def newmeetup():
-    title = request.args.get("title", "Enter title hier")
-    image = request.args.get("image", "https://picsum.photos/520/460")
-    address = request.args.get("address", "Asd Str. 16, 546372, Oklohama")
-    category = request.args.get("category", "Meetup")
-    description=request.args.get("description", "This is a meetup...")
-    
-    meetupData = {
-            "title": title,
-            "address": address,
-            "images": image,
-            "description": description,
-            "category": category,
-            };
-    
-    return render_template("newmeetup.html", title=title,image=image, address=address, category=category, description=description, submitHandler=submitHandler)
+    if request.method == 'POST':
+        meetupData = request.form[{
+            "title": "title",
+            "address": "address",
+            "images": "image",
+            "description": "description",
+            "category": "category",
+        }]
+    return render_template("newmeetup.html", meetupData=meetupData)
+
 
   
 if __name__ == '__main__':

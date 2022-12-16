@@ -15,7 +15,7 @@
       <p>{{meetup.description}}</p>
     </div>
     <div>
-      <button onClick="{toggleFavoriteStatusHandler(meetup)}">
+      <button onclick="toggleFavoriteStatusHandler({{meetup}})">
         {% if meetup.isFavorite %} Remove from Favorites {%else%} Add to
         Favorites {%endif%}
       </button>

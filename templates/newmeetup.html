@@ -2,7 +2,11 @@
 <h1>Add New Meetup</h1>
 
 <div class="newMeetupPage">
-  <form method="get" class="formCard">
+  <form
+    action="https://meetup-getup-python.bscebeci.de/api/meetups"
+    method="POST"
+    class="formCard"
+  >
     <label for="title">Meetup Title</label>
     <input type="text" name="title" id="title" required />
     <label for="image">Meetup Image</label>
@@ -15,10 +19,10 @@
     <input type="text" name="category" id="category" required />
     <label for="description">Description</label>
 
-    <input type="textarea" rows="8" id="description" required />
+    <textarea type="text" rows="8" id="description" required />
     <br />
 
-    <input type="submit" value="Add New Meetup" onSubmit="submitHandler()" />
+    <input type="submit" value="Add New Meetup" />
   </form>
 </div>
 
