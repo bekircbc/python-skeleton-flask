@@ -21,6 +21,9 @@ def toggleFavoriteStatusHandler(meetup):
             "category": meetup.category,
             };
     requests.put("https://meetup-getup-python.bscebeci.de/api/meetups/${meetup.id}", meetupData)
+    
+def submitHandler(meetupData):
+    requests.post("https://meetup-getup-python.bscebeci.de/api/meetups", meetupData)
 
 @app.route('/')
 def hello():
@@ -30,7 +33,7 @@ def hello():
         Item("Banane",4)
         ]
     
-    person=("Bkr", "Cbc")
+    person=("Bkr", "Tkr")
     
 # items=[{"name":"Apfel", "amount":5},{"name":"Birne", "amount":5},{"name":"Banane", "amount":5}]
 
@@ -96,6 +99,25 @@ def favorites():
     meetups=json.loads(data)
     
     return render_template("favorites.html", meetups=meetups, toggleFavoriteStatusHandler=toggleFavoriteStatusHandler)
+
+@app.route('/newmeetup', methods=['POST'])
+def newmeetup():
+    title = request.args.get("title", "Enter title hier")
+    image = request.args.get("image", "https://picsum.photos/520/460")
+    address = request.args.get("address", "Asd Str. 16, 546372, Oklohama")
+    category = request.args.get("category", "Meetup")
+    description=request.args.get("description", "This is a meetup...")
+    
+    meetupData = {
+            "title": title,
+            "address": address,
+            "images": image,
+            "description": description,
+            "category": category,
+            };
+    
+    return render_template("newmeetup.html", title=title,image=image, address=address, category=category, description=description, submitHandler=submitHandler)
+
   
 if __name__ == '__main__':
     app.run()

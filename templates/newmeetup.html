@@ -1,0 +1,24 @@
+{% extends "layouts/main.html" %} {% block content %}
+<h1>Add New Meetup</h1>
+
+<div class="newMeetupPage">
+  <form method="get" class="formCard">
+    <label for="title">Meetup Title</label>
+    <input type="text" name="title" id="title" required />
+    <label for="image">Meetup Image</label>
+    <input type="text" name="image" id="image" required />
+    <label for="address">Address</label>
+
+    <input type="text" name="address" id="address" required />
+    <label for="category">Category</label>
+
+    <input type="text" name="category" id="category" required />
+    <label for="description">Description</label>
+
+    <textarea rows="5" id="description" required />
+    <br />
+    <input type="submit" value="Add New Meetup" onSubmit="submitHandler()" />
+  </form>
+</div>
+
+{% endblock %}
